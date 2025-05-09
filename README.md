@@ -1,6 +1,6 @@
 # Stock Price Prediction Project
 
-This project implements various machine learning models for stock price prediction.
+This project implements various machine learning models for stock price prediction, comparing the performance of Moirai Transformer, LSTM, and Random Forest approaches.
 
 ## Project Structure
 
@@ -17,7 +17,7 @@ This project implements various machine learning models for stock price predicti
 │   ├── correlation_heatmap.png
 │   ├── lstm_*.png         # LSTM model plots
 │   ├── moirai_*.png       # Transformer model plots
-│   └── rf_*.png           # Random Forest model plots
+│   └── random_forest_*.png # Random Forest model plots
 │
 ├── results/               # Analysis results and metrics
 │   └── analysis_results.json  # Model performance metrics
@@ -34,15 +34,16 @@ This project implements various machine learning models for stock price predicti
 ├── processed_data/        # Processed dataset files
 │   └── AAPL_processed.csv # Processed Apple stock data
 │
+├── poster.html           # Interactive project poster
 ├── requirements.txt       # Project dependencies (root level for easy installation)
 └── README.md             # Project documentation
 ```
 
 ## Models Implemented
 
-1. **Moirai Transformer**: A custom transformer model for time series forecasting
-2. **LSTM**: Long Short-Term Memory neural network
-3. **Random Forest**: Ensemble learning model
+1. **Random Forest**: Ensemble learning model with feature importance analysis
+2. **LSTM**: Long Short-Term Memory neural network for capturing temporal dependencies
+3. **Moirai Transformer**: A custom transformer model for time series forecasting with self-attention mechanism
 
 ## Setup and Installation
 
@@ -73,6 +74,23 @@ This will:
 
 ### 2. Running Models
 You can run the models in any order. Each model will automatically load the processed data.
+
+### 3. Viewing the Project Poster
+The project includes an interactive HTML poster that summarizes the findings:
+
+1. Open `poster.html` in any modern web browser
+2. The poster presents:
+   - Problem statement and background
+   - Methods and data preprocessing approach
+   - Detailed analysis of each model (Random Forest, LSTM, Moirai Transformer)
+   - Performance metrics and visualizations
+   - Conclusions for each model
+
+3. To save the poster as PDF:
+   - Open in Chrome or Edge browser
+   - Press Cmd+P (Mac) or Ctrl+P (Windows/Linux)
+   - Select "Save as PDF" option
+   - Choose landscape orientation for best results
 
 #### Moirai Transformer Model
 ```bash
