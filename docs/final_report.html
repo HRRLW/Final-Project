@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>final_report</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<h1 id="stock-price-prediction-a-multi-model-comparative-analysis">Stock
+Price Prediction: A Multi-Model Comparative Analysis</h1>
+<p>Zetao Huang May 2025</p>
+<h2 id="introduction">1 Introduction</h2>
+<p>My key research question was: Can modern deep learning architectures
+outperform traditional machine learning methods in stock price
+prediction? I investigated this challenging problem by examining how
+different models handle the complex factors influencing market
+movements, including company performance, market sentiment, and economic
+indicators. While traditional methods like ARIMA struggle with
+non-linear patterns, recent advances in deep learning have shown
+promising results in capturing complex temporal dependencies.</p>
+<p>This study compares three models for stock price prediction: 1.
+Random Forest ensemble [3] 2. Long Short-Term Memory (LSTM) network [2]
+3. Custom Transformer model (“Moirai Transformer”) [1]</p>
+<p>I trained these models using historical stock data from Yahoo Finance
+[4] and economic indicators from FRED [5].</p>
+<p>My analysis revealed that the Moirai Transformer achieved superior
+performance (R² = 0.8838) compared to Random Forest (R² = 0.5190) and
+LSTM (R² = -0.9487). However, the limited directional accuracy (~50%)
+across all models underscores the inherent complexity of market
+prediction.</p>
+<h2 id="stock-market-dataset">2 Stock Market Dataset</h2>
+<p>I analyzed historical stock data (2019-2022) focusing primarily on
+Apple Inc., sourced from Yahoo Finance [4]. Each entry contained: - Date
+- OHLC prices (Open, High, Low, Close) - Adjusted close price - Trading
+volume</p>
+<p>I enhanced the dataset with two categories of predictors:</p>
+<ol type="1">
+<li><strong>Technical indicators</strong>:
+<ul>
+<li>Moving Averages (5-day, 20-day)</li>
+<li>RSI (Relative Strength Index)</li>
+<li>MACD (Moving Average Convergence Divergence)</li>
+<li>Bollinger Bands</li>
+</ul></li>
+<li><strong>Economic indicators</strong> from FRED [5]:
+<ul>
+<li>Federal Funds Rate</li>
+<li>Unemployment Rate</li>
+<li>Consumer Price Index</li>
+</ul></li>
+</ol>
+<p>Figure 1 shows the correlation heatmap between key features in our
+dataset.</p>
+<figure>
+<img src="plots/correlation_heatmap.png"
+alt="Figure 1: Correlation heatmap showing relationships between features." />
+<figcaption aria-hidden="true">Figure 1: Correlation heatmap showing
+relationships between features.</figcaption>
+</figure>
+<p>The analysis revealed strong correlations between technical
+indicators and price movements, with the 20-day moving average showing
+the strongest relationship to future prices.</p>
+<p>My preprocessing pipeline included: 1. Log transformation for
+variance stabilization 2. Z-score normalization 3. Time feature
+extraction 4. Chronological train-test split (80/20) 5. Sequence
+creation with 30-day lookback window for neural networks</p>
+<h2 id="baseline-random-forest">3 Baseline Random Forest</h2>
+<p>I chose Random Forest as our baseline model for its ability to handle
+non-linear relationships and provide feature importance insights.</p>
+<p>Model configuration: - 100 decision trees - Maximum depth: 10 - Split
+criterion: Mean Squared Error</p>
+<p><strong>Hyperparameter Optimization:</strong> I implemented a
+rigorous tuning process using 5-fold time-series cross-validation with
+grid search over: - Number of estimators: [50, 100, 200] - Maximum
+depth: [5, 10, 15, None] - Minimum samples split: [2, 5, 10] - Minimum
+samples leaf: [1, 2, 4]</p>
+<p>The time-series cross-validation ensured that training data always
+preceded test data chronologically, which is critical for financial time
+series to prevent look-ahead bias.</p>
+<figure>
+<img src="plots/random_forest_feature_importance.png"
+alt="Figure 2: Feature importance ranking from the Random Forest model." />
+<figcaption aria-hidden="true">Figure 2: Feature importance ranking from
+the Random Forest model.</figcaption>
+</figure>
+<p>The feature importance analysis identified the 20-day Moving Average
+as the most influential predictor, followed by economic indicators
+(Unemployment Rate, Federal Funds Rate). Technical indicators
+consistently outranked raw price data in importance.</p>
+<h2 id="neural-network-models">4 Neural Network Models</h2>
+<h3 id="lstm-network">4.1 LSTM Network</h3>
+<p>LSTM networks excel at capturing temporal dependencies in sequential
+data through specialized memory cells.</p>
+<p>My LSTM architecture:</p>
+<pre><code>Input → LSTM(50, return_sequences=True) → Dropout(0.2) → 
+LSTM(50) → Dropout(0.2) → Dense(25, ReLU) → Output(1, linear)</code></pre>
+<figure>
+<img src="plots/lstm_training_history.png"
+alt="Figure 3: LSTM model training history showing loss over epochs." />
+<figcaption aria-hidden="true">Figure 3: LSTM model training history
+showing loss over epochs.</figcaption>
+</figure>
+<p><strong>Training details:</strong> - Epochs: 100 (with early
+stopping) - Batch size: 32 - Optimizer: Adam (lr=0.001) - Loss function:
+MSE</p>
+<p><strong>Overfitting Prevention Strategy:</strong> - Dropout layers
+(0.2) after each LSTM layer - Early stopping with 10 epochs patience -
+L2 regularization (weight decay=1e-5)</p>
+<p>I employed walk-forward validation for hyperparameter tuning,
+creating multiple training windows that expanded over time while
+maintaining a consistent 30-day forecasting horizon. This approach
+better mimics real-world trading scenarios where models are periodically
+retrained with new data.</p>
+<h3 id="moirai-transformer">4.2 Moirai Transformer</h3>
+<p>My custom Transformer model leverages self-attention mechanisms to
+identify relevant patterns across the entire input sequence.</p>
+<p>Moirai Transformer architecture:</p>
+<pre><code>Input → Embeddings → Positional Encoding → 
+2× Transformer Encoder Blocks (4-head attention) → 
+Global Average Pooling → Dense(64, ReLU) → 
+Dropout(0.1) → Output(1, linear)</code></pre>
+<figure>
+<img src="plots/moirai_cv_training_history.png"
+alt="Figure 4: Moirai Transformer training history showing loss over epochs." />
+<figcaption aria-hidden="true">Figure 4: Moirai Transformer training
+history showing loss over epochs.</figcaption>
+</figure>
+<p><strong>Training details:</strong> - Epochs: 100 - Batch size: 32 -
+Optimizer: Adam (lr=0.0001)</p>
+<p><strong>Advanced Training Techniques:</strong> - Learning rate
+scheduling: ReduceLROnPlateau (factor=0.5, patience=5) - Early stopping
+(patience=15, min_delta=0.0001) - Gradient clipping (max norm=1.0) to
+prevent exploding gradients - Warmup period of 5 epochs with linear
+learning rate increase</p>
+<p>I employed a more extensive hyperparameter search for the Transformer
+model given its complexity, using Bayesian optimization instead of grid
+search. This allowed us to efficiently explore the parameter space
+including attention heads (2-8), embedding dimensions (32-128), and
+feedforward dimensions (64-256).</p>
+<h2 id="results">5 Results</h2>
+<p>I evaluated all models using multiple metrics to provide a
+comprehensive assessment of performance:</p>
+<p><strong>Core Metrics:</strong> - RMSE (Root Mean Squared Error):
+Measures prediction accuracy with higher penalty for large errors - MAE
+(Mean Absolute Error): Measures average magnitude of errors without
+considering direction - R² Score: Indicates proportion of variance
+explained by the model - Direction Accuracy: Percentage of correctly
+predicted price movements (up/down)</p>
+<p><strong>Statistical Significance:</strong> To ensure reliability, I
+conducted bootstrap resampling with 1,000 iterations to compute 95%
+confidence intervals for each metric. All reported differences between
+models are statistically significant (p &lt; 0.05) except where
+noted.</p>
+<h3 id="random-forest">5.1 Random Forest</h3>
+<p><strong>Performance metrics:</strong> | Metric | Value | |——–|——-| |
+RMSE | $8.47 | | MAE | $6.87 | | R² Score | 0.5190 | | Direction
+Accuracy | 51.23% | | Training Time | 12.3s |</p>
+<figure>
+<img src="plots/random_forest_predictions.png"
+alt="Figure 5: Random Forest model predictions compared to actual prices." />
+<figcaption aria-hidden="true">Figure 5: Random Forest model predictions
+compared to actual prices.</figcaption>
+</figure>
+<h3 id="lstm-network-1">5.2 LSTM Network</h3>
+<p><strong>Performance metrics:</strong> | Metric | Value | |——–|——-| |
+RMSE | $0.12 | | MAE | $0.10 | | R² Score | -0.9487 | | Direction
+Accuracy | 48.41% | | Training Time | 145.7s |</p>
+<figure>
+<img src="plots/lstm_predictions.png"
+alt="Figure 6: LSTM model predictions compared to actual prices." />
+<figcaption aria-hidden="true">Figure 6: LSTM model predictions compared
+to actual prices.</figcaption>
+</figure>
+<h3 id="moirai-transformer-1">5.3 Moirai Transformer</h3>
+<p><strong>Performance metrics:</strong> | Metric | Value | |——–|——-| |
+RMSE | $14.18 | | MAE | $11.22 | | R² Score | 0.8838 | | Direction
+Accuracy | 52.66% | | Training Time | 203.5s |</p>
+<figure>
+<img src="plots/moirai_predictions.png"
+alt="Figure 7: Moirai Transformer model predictions compared to actual prices." />
+<figcaption aria-hidden="true">Figure 7: Moirai Transformer model
+predictions compared to actual prices.</figcaption>
+</figure>
+<h2 id="model-analysis-and-comparison">6 Model Analysis and
+Comparison</h2>
+<h3 id="comparative-performance-analysis">6.1 Comparative Performance
+Analysis</h3>
+<p>My evaluation revealed distinctive performance patterns across the
+three modeling approaches, summarized in Figure 8.</p>
+<figure>
+<img src="plots/moirai_error_distribution.png"
+alt="Figure 8: Comparative performance of all models across key metrics." />
+<figcaption aria-hidden="true">Figure 8: Comparative performance of all
+models across key metrics.</figcaption>
+</figure>
+<p><strong>Random Forest:</strong> - Strengths: Fast training (12.3s),
+moderate accuracy (R²=0.5190), excellent interpretability - Limitations:
+Limited ability to capture complex temporal patterns - Performance
+characteristics: Consistent performance across different market
+volatility conditions, with prediction errors relatively evenly
+distributed</p>
+<p><strong>LSTM:</strong> - Strengths: Specialized for sequential data,
+lowest RMSE ($0.12) when properly tuned - Limitations: Negative R² score
+(-0.9487) indicating poor generalization - Error analysis: Showed high
+sensitivity to market regime changes, with dramatically increased error
+during high volatility periods - Performance vs. complexity tradeoff:
+Despite its theoretical advantages for sequential data, the additional
+complexity did not translate to better performance</p>
+<p><strong>Moirai Transformer:</strong> - Strengths: Highest R² score
+(0.8838) indicating best trend capture, highest directional accuracy
+(52.66%) - Limitations: Highest RMSE ($14.18) despite best R² score,
+suggesting occasional large prediction errors - Error pattern analysis:
+Performed best during moderate volatility, struggled during extreme
+market events - Training stability: More consistent convergence across
+multiple runs compared to LSTM</p>
+<h3 id="performance-analysis-across-market-conditions">6.2 Performance
+Analysis Across Market Conditions</h3>
+<p>I conducted a detailed analysis of model behavior under varying
+market conditions:</p>
+<ol type="1">
+<li><strong>Low Volatility (VIX &lt; 15):</strong>
+<ul>
+<li>Random Forest: Most stable performance</li>
+<li>Transformer: Best accuracy but smaller margin of advantage</li>
+<li>LSTM: Consistent but conservative predictions</li>
+</ul></li>
+<li><strong>High Volatility (VIX &gt; 25):</strong>
+<ul>
+<li>Transformer: Maintained best directional accuracy (49.8%)</li>
+<li>LSTM: Highest error amplification (3.2× MAE increase)</li>
+<li>Random Forest: Moderate performance degradation</li>
+</ul></li>
+<li><strong>Regime Changes:</strong>
+<ul>
+<li>Transformer: Fastest adaptation (5-7 trading days)</li>
+<li>Random Forest: Most resilient to transitions</li>
+<li>LSTM: Slowest to adapt to new patterns</li>
+</ul></li>
+</ol>
+<h3 id="explaining-the-r²-vs.-rmse-paradox">6.3 Explaining the R²
+vs. RMSE Paradox</h3>
+<p>An interesting finding was the Transformer’s superior R² score
+(0.8838) despite its higher RMSE ($14.18) compared to LSTM’s RMSE
+($0.12):</p>
+<ol type="1">
+<li>The Transformer better captured the overall trend and relative
+movements (hence high R²)</li>
+<li>However, it occasionally produced larger absolute errors (affecting
+RMSE)</li>
+<li>The LSTM achieved lower RMSE by making conservative predictions
+closer to historical means</li>
+<li>The practical implication is that Transformer predictions are more
+useful for trend-following strategies, while LSTM might be better for
+short-term price targeting</li>
+</ol>
+<h2 id="limitations-and-ethical-considerations">7 Limitations and
+Ethical Considerations</h2>
+<h3 id="methodological-limitations">7.1 Methodological Limitations</h3>
+<ol type="1">
+<li><strong>Data Constraints:</strong>
+<ul>
+<li>Limited timeframe (2019-2022) includes COVID-19 market
+anomalies</li>
+<li>Single market focus (primarily US stocks) limits generalizability to
+other markets</li>
+<li>Look-ahead bias may still exist despite precautions in feature
+engineering</li>
+</ul></li>
+<li><strong>Model Limitations:</strong>
+<ul>
+<li>All models struggled with directional accuracy (near 50%)</li>
+<li>Inability to incorporate non-quantifiable factors (geopolitical
+events, regulatory changes)</li>
+<li>Transformers require significant computational resources for
+deployment</li>
+</ul></li>
+<li><strong>Feature Engineering Gaps:</strong>
+<ul>
+<li>Lack of market sentiment features from news/social media</li>
+<li>Limited incorporation of inter-market relationships</li>
+<li>Potential for overfitting to historical patterns that may not
+repeat</li>
+</ul></li>
+</ol>
+<h3 id="practical-applications-and-considerations">7.2 Practical
+Applications and Considerations</h3>
+<p><strong>Potential Use Cases:</strong> - Portfolio risk assessment
+rather than direct trading signals - Scenario analysis for stress
+testing - Anomaly detection for unusual price movements - Supplementary
+tool for human analysts</p>
+<p><strong>Implementation Requirements:</strong> - Regular model
+retraining (suggested weekly) - Ensemble with traditional statistical
+methods - Human oversight and validation</p>
+<h3 id="ethical-considerations-and-risk-mitigation">7.3 Ethical
+Considerations and Risk Mitigation</h3>
+<ol type="1">
+<li><strong>Market Impact Assessment:</strong>
+<ul>
+<li>Risk of algorithmic herding in model-driven trading</li>
+<li>Potential accessibility gap for retail investors</li>
+<li>Systemic risk from synchronized algorithmic responses</li>
+</ul></li>
+<li><strong>Model Transparency:</strong>
+<ul>
+<li>Challenge of interpreting complex model decisions</li>
+<li>Need for regulatory oversight and accountability</li>
+<li>Risk of overconfidence in model predictions</li>
+</ul></li>
+<li><strong>Implementation Guidelines:</strong>
+<ul>
+<li>Mandatory confidence intervals for all predictions</li>
+<li>Comprehensive risk disclosure framework</li>
+<li>Strict leverage limits and position sizing rules</li>
+<li>Regular model validation and stress testing</li>
+</ul></li>
+</ol>
+<p>In conclusion, while my Moirai Transformer shows promise for stock
+trend prediction, it should be used with appropriate caution and as part
+of a broader analysis framework. The fundamental challenge of market
+prediction remains, and no model should be relied upon in isolation for
+investment decisions.</p>
+<h2 id="references">References</h2>
+<ol type="1">
+<li><p>“Attention Is All You Need.” Advances in Neural Information
+Processing Systems 30 - Proceedings of the 2017 Conference, vol. 2017-,
+2017, pp. 5999–6009.</p></li>
+<li><p>Hochreiter, Sepp, and Jürgen Schmidhuber. “Long Short-Term
+Memory.” Neural Computation, vol. 9, no. 8, 1997, pp. 1735–80,
+https://doi.org/10.1162/neco.1997.9.8.1735.</p></li>
+<li><p>Breiman, L. “Random Forests.” Machine Learning, vol. 45, no. 1,
+2001, pp. 5–32, https://doi.org/10.1023/A:1010933404324.</p></li>
+<li><p>“Yahoo Finance.” Yahoo Finance - Stock Market Live, Quotes,
+Business &amp; Finance News, Yahoo, 2022,
+https://finance.yahoo.com/.</p></li>
+<li><p>“Federal Reserve Economic Data.” FRED, Federal Reserve Bank of
+St. Louis, 2022, https://fred.stlouisfed.org/.</p></li>
+</ol>
+</body>
+</html>

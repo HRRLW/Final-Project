@@ -1,42 +1,56 @@
 # Stock Price Prediction Project
 
-This project implements various machine learning models for stock price prediction, comparing the performance of Moirai Transformer, LSTM, and Random Forest approaches.
+This project implements and compares various machine learning models for stock price prediction, focusing on the performance comparison between traditional machine learning (Random Forest) and deep learning approaches (LSTM and Moirai Transformer).
+
+## Key Deliverables
+
+1. **Final Report**: A comprehensive analysis of the project
+   - Available in both Markdown (`final_report.md`) and HTML (`final_report.html`) formats
+   - Includes detailed methodology, results, and ethical considerations
+   - Features visualizations of model architectures and performance metrics
+
+2. **Project Poster**: An interactive presentation of key findings
+   - Available as `poster.html`
+   - Provides a visual summary of methods and results
 
 ## Project Structure
 
 ```
 .
-├── src/                    # Source code files
-│   ├── analysis_utils.py   # Utility functions for data analysis
+├── docs/                  # Project documentation
+│   ├── final_report.md    # Comprehensive project report (Markdown)
+│   ├── final_report.html  # Project report (HTML format)
+│   └── poster.html       # Interactive project presentation
+│
+├── src/                  # Source code files
+│   ├── analysis_utils.py  # Utility functions for data analysis
 │   ├── data_preprocessing.py # Data preprocessing functions
-│   ├── lstm_model.py       # LSTM model implementation
+│   ├── lstm_model.py     # LSTM model implementation
 │   ├── moirai_transformer.py # Transformer model implementation
 │   └── random_forest_model.py # Random Forest model implementation
 │
-├── plots/                  # Generated plots and visualizations
+├── plots/                # Generated plots and visualizations
 │   ├── correlation_heatmap.png
-│   ├── lstm_*.png         # LSTM model plots
-│   ├── moirai_*.png       # Transformer model plots
+│   ├── lstm_*.png       # LSTM model plots
+│   ├── moirai_*.png     # Transformer model plots
 │   └── random_forest_*.png # Random Forest model plots
 │
-├── results/               # Analysis results and metrics
-│   └── analysis_results.json  # Model performance metrics
+├── results/             # Analysis results and metrics
+│   └── analysis_results.json # Model performance metrics
 │
-├── models/                # Saved model files
-│   ├── lstm_model.h5      # LSTM model weights
-│   └── moirai_model.pth   # Transformer model weights
+├── models/              # Saved model files
+│   ├── lstm_model.h5    # LSTM model weights
+│   └── moirai_model.pth # Transformer model weights
 │
-├── raw_data/             # Original stock price data
-│   ├── AAPL.csv          # Apple stock data
-│   ├── GOOGL.csv         # Google stock data
-│   └── ...               # Other tech companies
+├── raw_data/           # Original stock price data
+│   ├── AAPL.csv        # Apple stock data
+│   ├── GOOGL.csv       # Google stock data
+│   └── ...             # Other tech companies
 │
-├── processed_data/        # Processed dataset files
+├── processed_data/      # Processed dataset files
 │   └── AAPL_processed.csv # Processed Apple stock data
 │
-├── poster.html           # Interactive project poster
-├── requirements.txt       # Project dependencies (root level for easy installation)
-└── README.md             # Project documentation
+└── requirements.txt     # Project dependencies
 ```
 
 ## Models Implemented
@@ -75,22 +89,35 @@ This will:
 ### 2. Running Models
 You can run the models in any order. Each model will automatically load the processed data.
 
-### 3. Viewing the Project Poster
-The project includes an interactive HTML poster that summarizes the findings:
+### 3. Viewing Project Documentation
+
+#### Final Report
+The comprehensive project report is available in two formats:
+
+1. **Markdown Version** (`final_report.md`):
+   - Contains detailed methodology and analysis
+   - Includes all visualizations and results
+   - Perfect for version control and easy editing
+
+2. **HTML Version** (`final_report.html`):
+   - Interactive web-based format
+   - Enhanced readability with proper formatting
+   - Can be viewed in any modern web browser
+
+#### Project Poster
+The interactive HTML poster provides a visual summary:
 
 1. Open `poster.html` in any modern web browser
-2. The poster presents:
-   - Problem statement and background
-   - Methods and data preprocessing approach
-   - Detailed analysis of each model (Random Forest, LSTM, Moirai Transformer)
-   - Performance metrics and visualizations
-   - Conclusions for each model
+2. Key sections include:
+   - Problem statement and methodology
+   - Model architectures and implementation
+   - Performance comparisons and visualizations
+   - Key findings and conclusions
 
-3. To save the poster as PDF:
-   - Open in Chrome or Edge browser
-   - Press Cmd+P (Mac) or Ctrl+P (Windows/Linux)
-   - Select "Save as PDF" option
-   - Choose landscape orientation for best results
+3. Export options:
+   - Use browser print function (Cmd+P / Ctrl+P)
+   - Select "Save as PDF" for permanent copy
+   - Choose landscape orientation for optimal layout
 
 #### Moirai Transformer Model
 ```bash
